@@ -1,0 +1,12 @@
+.{
+    .name = .maleph,
+    .version = "0.0.0",
+    .fingerprint = 0xf24032364d0bbdbe,
+    .minimum_zig_version = "0.18.0-dev.362+705a6b4ef",
+    .dependencies = .{},
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
+    },
+}

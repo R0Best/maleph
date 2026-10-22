@@ -1,0 +1,65 @@
+/* Copyright (c) 2026 Gozner Robert-Ioan & Maleph Team. All Rights Reserved. */
+
+
+\define א \of_type \System(ב, בּ) \where \block_begin
+בּ \of_type \Atom \as \block_begin 1 \block_end \instruction_end
+ב \of_type \Null \as \being 0 \block_end \instruction_end
+\block_end \as 
+\block_begin
+
+/* Comparison operations*/
+  /* Equality */
+  \define =              \of_type \Operator(a, b) \where \block_begin
+    \equality
+  \block_end \instruction_end
+
+/* Arithmetic operations*/
+  /* Addition */
+  \define +              \of_type \Operator(a, b) \where \block_begin
+    a \is_apart_of \domain_of א \instruction_end
+    b \is_apart_of \domain_of א \instruction_end
+    \block_end \as
+  \block_begin \hyperoperation(2) \block_end \where \block_begin
+    \define Commutativity \of_type \Property \where \block_begin
+      a \and_also b \is_apart_of \domain_of א \instruction_end
+    \block_end \as \block_begin
+      \expression_begin \expression_begin a + b \expression_end = \expression_begin b + a \expression_end \expression_end \instruction_end
+    \block_end \instruction_end
+
+    \define Associativity \of_type \Property \where \block_begin
+      a \and_also b \and_also c \is_apart_of \domain_of א \instruction_end
+    \block_end \as \block_begin
+      \expression_begin \expression_begin \expression_begin a + b \expression_end + c \expression_end = \expression_begin a + \expression_begin b + c \expression_end \expression_end \expression_end \instruction_end
+    \block_end \instruction_end
+
+    \define NullAddition \of_type \Identity \where \block_begin
+      a \is_apart_of \domain_of א \instruction_end
+    \block_end \as \block_begin
+      \expression_begin \expression_begin a + ב \expression_end = a \expression_end \instruction_end
+    \block_end \instruction_end
+  \block_end \instruction_end
+
+  
+
+  /* Subtraction */
+  \define -              \of_type \Operator(lhs, rhs) \where \block_begin
+    lhs \is_apart_of \domain_of א \instruction_end
+    rhs \is_apart_of \domain_of א \instruction_end
+    \block_end \as
+  \block_begin \hyperoperation(-2) \block_end \instruction_end
+
+  /* Multiplication */
+  \define *              \of_type \Operator(a, b) \where \block_begin
+    lhs \is_apart_of \domain_of א \instruction_end
+    rhs \is_apart_of \domain_of א \instruction_end
+    \block_end \as
+  \block_begin \hyperoperation(3) \block_end \instruction_end
+
+  /* Division */
+  \define /              \of_type \Operator(a, b) \where \block_begin
+    lhs \is_apart_of \domain_of א                                        \instruction_end
+    rhs \is_apart_of \domain_of א \set_subtraction \set_begin ב \set_end \instruction_end
+    \block_end \as
+  \block_begin \hyperoperation(-3) \block_end \instruction_end
+ 
+\block_end \instruction_end
